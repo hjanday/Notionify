@@ -24,8 +24,8 @@ chosen_page = n_client.get_block("your notion page link")
 
 @bot_client.event
 async def bootup():
-    print("Bot is working")
-    await bot_client.change_presence(activity=discord.Game(name="n-info"))
+    print('Bot is currently online')
+    await client.change_presence(activity=discord.Game(name="n-addTodo"))
 
 
 
