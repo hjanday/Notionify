@@ -11,7 +11,6 @@ currDate = currentDay.strftime("%B %d, %Y")
 time_and_day = now.strftime("%H:%M:%S")
 
     
-
 #Init bot tokens
 bot_client = discord.Client()
 bot_client = commands.Bot(command_prefix='n-')
@@ -21,15 +20,10 @@ n_client = NotionClient(token_v2='your token v2 key')
 chosen_page = n_client.get_block("your notion page link")
 
 
-
 @bot_client.event
 async def bootup():
     print('Bot is currently online')
     await client.change_presence(activity=discord.Game(name="n-addTodo"))
-
-
-
-
 
 
 
@@ -42,29 +36,5 @@ async def addTodo(ctx, *, todoInfo):
     
     user = bot_client.get_user(ctx.author.id)
     await user.send("Added todo labeled as : " + todoInfo + " on " + currDate + " and " + time_and_day)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 bot_client.run("your bot token")
