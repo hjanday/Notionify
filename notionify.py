@@ -4,7 +4,8 @@ from datetime import date,time, datetime
 import calendar
 from notion.client import NotionClient
 from notion.block import TodoBlock
-
+from notion.block import TextBlock
+from notion.block import ToggleBlock
 now = datetime.now()
 currentDay = date.today()
 currDate = currentDay.strftime("%B %d, %Y")
@@ -15,15 +16,17 @@ time_and_day = now.strftime("%H:%M:%S")
 bot_client = discord.Client()
 bot_client = commands.Bot(command_prefix='n-')
 
-n_client = NotionClient(token_v2='your token v2 key')
+n_token = open("notion.txt", "r").read()
+d_token = open("TOKEN.txt", "r").read()
+n_client = NotionClient(token_v2=n_token)
 
-chosen_page = n_client.get_block("your notion page link")
+chosen_page = n_client.get_block("https://www.notion.so/Todo-s-Discord-Style-25bb969ed46049d08eaa1bb24a1ad641")
 
 
 @bot_client.event
 async def bootup():
     print('Bot is currently online')
-    await client.change_presence(activity=discord.Game(name="n-addTodo"))
+    await bot_client.change_presence(activity=discord.Game(name="n-addTodo"))
 
 
 
@@ -37,4 +40,4 @@ async def addTodo(ctx, *, todoInfo):
     user = bot_client.get_user(ctx.author.id)
     await user.send("Added todo labeled as : " + todoInfo + " on " + currDate + " and " + time_and_day)
 
-bot_client.run("your bot token")
+bot_client.run(d_token)
