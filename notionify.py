@@ -20,7 +20,7 @@ n_token = open("notion.txt", "r").read()
 d_token = open("TOKEN.txt", "r").read()
 n_client = NotionClient(token_v2=n_token)
 
-chosen_page = n_client.get_block("https://www.notion.so/Todo-s-Discord-Style-25bb969ed46049d08eaa1bb24a1ad641")
+chosen_page = n_client.get_block("link")
 
 
 @bot_client.event
